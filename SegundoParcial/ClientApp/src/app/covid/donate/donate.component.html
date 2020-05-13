@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p>Donando a {{psn.nombre}} {{psn.apellido}}</p>
+            <div class="form">
+                <div class="form-group">
+                    <label>Tipo de apoyo</label>
+                    <select class="form-control" [(ngModel)]="apy.tipo" [ngModelOptions]="{standalone:true}">
+                        <option selected value="Alimentario">Alimentario</option>
+                        <option value="Economico">Económico</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Valor</label>
+                    <input type="number" name="Edad" [(ngModel)]="apy.valor" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <input type="text" name="Fecha" [ngModel]="fecha()" class="form-control" disabled/>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1" (click)="confirmar()">Confirmar</button>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<!--<div class="row">
+    <div class="col-6">
+        <input [(ngModel)]="searchText" type="text" class="form-control" placeh older="Type to filter">
+    </div>
+</div>
+<hr>-->
+
+<!--<table class="table table-striped" *ngIf="liqs.length>0">-->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Identificación</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Acumulado</th>
+            <th scope="col">Apoyar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let psn of psns; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ psn.identificacion }} </td>
+            <td>{{ psn.nombre }}</td>
+            <td>{{ psn.apellido }}</td>
+            <td>{{ psn.sexo }}</td>
+            <td>{{ psn.edad }}</td>
+            <td>{{ psn.departamento }}</td>
+            <td>{{ psn.ciudad }}</td>
+            <td>{{ psn.acumulado }}</td>
+            <td><button class="btn btn-success btn-sm" (click)="apoyar(psn.identificacion)">Apoyar</button></td>
+        </tr>
+    </tbody>
+</table>
