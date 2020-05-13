@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Nazh52KPdxEZrrMv4DZ7IPv2Fc6V4LYfrPDN4RlnZNDAMXOtPsPiUWPvheyGfQzJ7ETrHK4Hub7Dx8Qx5/c50g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Developer\\Desktop\\Web3Layers\\Entity\\Entity.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Developer\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Developer\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
