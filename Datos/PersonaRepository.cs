@@ -13,7 +13,7 @@ namespace Datos
 
         private List<Persona> psns;
 
-        public PersonaRepository(ConnectionManager connection, GeneralContext _GContex)
+        public PersonaRepository(GeneralContext _GContex)
         {
             //_connection = connection._conexion;
             this.GContext = _GContex;
@@ -25,7 +25,7 @@ namespace Datos
 
             if(_psn!=null)
                 return false;
-                
+
             this.GContext.Personas.Add(psn);
             this.GContext.SaveChanges();
             return true;

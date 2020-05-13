@@ -1,10 +1,25 @@
 using Entity;
 
+using System;
+
 namespace SegundoParcial.Models
 {
     public class ApoyoInputModel
     {
-        public string Id{ get; set; }
+        //[Key]
+        public int Id { get; set; }
+
+        //[JsonProperty]
+        public string Persona { get; set; }
+
+        //[JsonProperty]
+        public string Tipo { get; set; }
+
+        //[JsonProperty]
+        public int Valor { get; set; }
+
+        //[JsonProperty]
+        public DateTime Fecha { get; set; }
     }
 
 
@@ -15,9 +30,11 @@ namespace SegundoParcial.Models
         }
         public ApoyoViewModel(Apoyo apy)
         {
-            Id = apy.Identificacion;
+            Persona = apy.Persona;
+            Valor = apy.Valor;
+            Tipo = apy.Tipo;
+            Fecha = apy.Fecha;
         }
-        public double ValorTotalAPagar { get; set; }
     }
 
 }

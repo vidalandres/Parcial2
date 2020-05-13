@@ -13,7 +13,7 @@ namespace Datos
 
         private List<Apoyo> apys;
 
-        public ApoyoRepository(ConnectionManager connection, GeneralContext _GContex)
+        public ApoyoRepository(GeneralContext _GContex)
         {
             //_connection = connection._conexion;
             this.GContext = _GContex;

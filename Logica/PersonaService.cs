@@ -7,37 +7,28 @@ namespace Logica
 {
     public class PersonaService
     {
-        private readonly ConnectionManager _conexion;
+        //private readonly ConnectionManager _conexion;
         private readonly PersonaRepository _repositorio;
 
-        public PersonaService(string connectionString)
+        public PersonaService( GeneralContext _GContext)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new PersonaRepository(_conexion);
+           // _conexion = new ConnectionManager(connectionString);
+            _repositorio = new PersonaRepository(_GContext);
         }
 
         public GuardarResponse Guardar(Persona psn)
         {
-            try
-            {
-                _conexion.Open();
-                _repositorio.Guardar(psn);
-                _conexion.Close();
+            
+            if(_repositorio.Guardar(psn))
                 return new GuardarResponse(psn);
-            }
-            catch (Exception e)
-            {
-                return new GuardarResponse($"Error de la Aplicacion: {e.Message}");
-            }
-            finally { _conexion.Close(); }
+            else
+                return new GuardarResponse("Error al guardar");
+
         }
 
-        public List<Persona> ConsultarTodos()
+        public Persona[] ConsultarTodos()
         {
-            _conexion.Open();
-            List<Persona> psns = _repositorio.ConsultarTodos();
-            _conexion.Close();
-            return psns;
+            return this._repositorio.ConsultarTodos();
         }
 
     }

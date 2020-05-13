@@ -22,7 +22,7 @@ namespace SegundoParcial.Controllers
         {
             Configuration = configuration;
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            _psnService = new PersonaService(connectionString);
+            _psnService = new PersonaService();
         }
         // GET: api/Persona
         [HttpGet]
