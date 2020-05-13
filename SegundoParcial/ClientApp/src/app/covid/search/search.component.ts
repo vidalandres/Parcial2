@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
 
   apoyar(id:string):void{
     this.cS.write(this.psns.find(x => x.identificacion == id));
-    location.pathname='donate';
+    //location.pathname='donate';
   }
 
 }

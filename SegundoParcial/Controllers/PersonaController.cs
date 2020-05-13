@@ -7,10 +7,10 @@ using Logica;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using PrimerParcial.Models;
+using SegundoParcial.Models;
 
 
-namespace PrimerParcial.Controllers
+namespace SegundoParcial.Controllers
 {
     [Route("api/persona")]
     [ApiController]

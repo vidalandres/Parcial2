@@ -1,60 +1,43 @@
 using System.Collections.Generic;  
 using System.Data.SqlClient;
 using Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Datos
 {
     public class PersonaRepository
     {
-        private readonly SqlConnection _connection;
+        //private readonly SqlConnection _connection;
+        private readonly GeneralContext GContext;
         private readonly List<Persona> _psns = new List<Persona>();
 
-        public PersonaRepository(ConnectionManager connection)
+        private List<Persona> psns;
+
+        public PersonaRepository(ConnectionManager connection, GeneralContext _GContex)
         {
-            _connection = connection._conexion;
+            //_connection = connection._conexion;
+            this.GContext = _GContex;
         }
 
-        public void Guardar(Persona psn)
+        public bool Guardar(Persona psn)
         {
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = @"Insert Into [psns].[dbo].[psn] (Identificacion)
-                                                    values (@identificacion)";
-                command.Parameters.AddWithValue("@Identificacion", psn.Identificacion);
-                var filas = command.ExecuteNonQuery();
-            }
+            var _psn = this.GContext.Personas.Find(psn.Identificacion);
+
+            if(_psn!=null)
+                return false;
+                
+            this.GContext.Personas.Add(psn);
+            this.GContext.SaveChanges();
+            return true;
 
         }
 
-        public List<Persona> ConsultarTodos()
+        public Persona[] ConsultarTodos()
         {
-            SqlDataReader dataReader;
-            List<Persona> psns = new List<Persona>();
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "Select * from [psns].[dbo].[psn]";
-                dataReader = command.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        Persona psn = DataReaderMapToPerson(dataReader);
-                        psns.Add(psn);
-                    }
-                }
-            }
-            return psns;
+            var psns = this.GContext.Personas.ToArrayAsync();
+            return psns.Result;
         }
 
-        private Persona DataReaderMapToPerson(SqlDataReader dataReader)
-        {
-            if(!dataReader.HasRows) return null;
-            Persona psn = new Persona();
-            /*psn.Identificacion = (string)dataReader["Identificacion"];
-            return psn;*/
-            return null;
-
-        }
     }
 }
 

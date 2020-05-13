@@ -1,6 +1,6 @@
 using Entity;
 
-namespace PrimerParcial.Models
+namespace SegundoParcial.Models
 {
     public class PersonaInputModel
     {

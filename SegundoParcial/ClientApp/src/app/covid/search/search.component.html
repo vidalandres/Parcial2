@@ -32,7 +32,7 @@
             <td>{{ psn.departamento }}</td>
             <td>{{ psn.ciudad }}</td>
             <td>{{ psn.acumulado }}</td>
-            <td><button class="btn btn-success btn-sm" (click)="apoyar(psn.identificacion)">Apoyar</button></td>
+            <td><button class="btn btn-success btn-sm" (click)="apoyar(psn.identificacion)" routerLink="/donate" >Apoyar</button></td>
         </tr>
     </tbody>
 </table>
