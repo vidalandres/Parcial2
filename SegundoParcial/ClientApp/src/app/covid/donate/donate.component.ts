@@ -40,7 +40,7 @@ export class DonateComponent implements OnInit {
       }
     );
     this.cS.clear();
-    this.location.back();
+    location.pathname='search';
   }
 
 }

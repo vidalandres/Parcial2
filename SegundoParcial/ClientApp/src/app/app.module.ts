@@ -11,6 +11,8 @@ import { RecordComponent } from './covid/record/record.component';
 import { SearchComponent } from './covid/search/search.component';
 import { DonateComponent } from './covid/donate/donate.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import { DonateComponent } from './covid/donate/donate.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     /*RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

@@ -2,24 +2,30 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <h2>Registro de persona</h2>
-            <h5>Para recivir apoyo</h5>
+            <h5>Para recibir apoyo</h5>
             <form>
 
                 <div class="form-group">
                     <label>Identificación</label>
-                    <input type="text" placeholder="Identificación" name="Identificación" [(ngModel)]="psn.identificacion" class="form-control" />
+                    <input formControlname="id" type="text" placeholder="Identificación" name="Identificación" [(ngModel)]="psn.identificacion" class="form-control" 
+                        [ngClass]="{ 'is-invalid': summitted && f.id.errors }"
+                    />
                 </div>
                 <div class="form-group">
                     <label>Nombres</label>
-                    <input type="text" placeholder="Nombres" name="objeto" [(ngModel)]="psn.nombre" class="form-control" />
+                    <input formControlname="nombre" type="text" placeholder="Nombres" name="objeto" [(ngModel)]="psn.nombre" class="form-control"
+                        [ngClass]="{ 'is-invalid': summitted && f.nombre.errors }"
+                    />
                 </div>
                 <div class="form-group">
                     <label>Apellidos</label>
-                    <input type="text" name="Apellidos" [(ngModel)]="psn.apellido" class="form-control" />
+                    <input formControlname="apellido" type="text" name="Apellidos" [(ngModel)]="psn.apellido" class="form-control" 
+                    [ngClass]="{ 'is-invalid': summitted && f.apellido.errors }"
+                />
                 </div>
                 <div class="form-group">
                     <label>Sexo</label>
-                    <select class="form-control" [(ngModel)]="psn.sexo" [ngModelOptions]="{standalone:true}">
+                    <select formControlname="sexo" class="form-control" [(ngModel)]="psn.sexo" [ngModelOptions]="{standalone:true}">
                         <option selected value="Maculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Indefinido">Indefinido</option>
@@ -27,18 +33,22 @@
                 </div>
                 <div class="form-group">
                     <label>Edad</label>
-                    <input type="number" name="Edad" [(ngModel)]="psn.edad" class="form-control"/>
+                    <input formControlname="edad" type="number" name="Edad" [(ngModel)]="psn.edad" class="form-control"
+                    [ngClass]="{ 'is-invalid': summitted && f.edad.errors }">
                 </div>
                 <div class="form-group">
                     <label>Departamento</label>
-                    <input type="text" name="Departamento" [(ngModel)]="psn.departamento" class="form-control"/>
+                    <input formControlname="departamento" type="text" name="Departamento" [(ngModel)]="psn.departamento" class="form-control"
+                    [ngClass]="{ 'is-invalid': summitted && f.departamento.errors }">
                 </div>
                 <div class="form-group">
                     <label>Ciudad</label>
-                    <input type="text" name="Ciudad" [(ngModel)]="psn.ciudad" class="form-control"/>
+                    <input formControlname="ciudad" type="text" name="Ciudad" [(ngModel)]="psn.ciudad" class="form-control"
+                    [ngClass]="{ 'is-invalid': summitted && f.ciudad.errors }">
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary mr-1" (click)="add()">Guardar</button>
+                    <button class="btn btn-primary mr-1" (click)="onSumit()">Guardar</button>
+                    <button class="btn btn-primary mr-1" (click)="onReset()">Limpiar</button>
                 </div>
             </form>
         </div>

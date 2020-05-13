@@ -17,13 +17,13 @@
           "C:\\Users\\Developer\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {
               "C:\\Users\\Developer\\Desktop\\Web3Layers\\Entity\\Entity.csproj": {
                 "projectPath": "C:\\Users\\Developer\\Desktop\\Web3Layers\\Entity\\Entity.csproj"
@@ -38,17 +38,15 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netstandard2.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[3.1.4, )"
             },
-            "NETStandard.Library": {
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[3.1.4, )"
             },
             "System.Collections": {
               "target": "Package",
@@ -69,6 +67,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
@@ -86,13 +89,13 @@
           "C:\\Users\\Developer\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {}
           }
         },
@@ -103,21 +106,23 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netstandard2.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.4, )"
             },
-            "NETStandard.Library": {
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[3.1.4, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [
@@ -130,6 +135,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }

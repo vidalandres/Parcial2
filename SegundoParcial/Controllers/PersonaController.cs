@@ -18,11 +18,11 @@ namespace SegundoParcial.Controllers
     {
         private readonly PersonaService _psnService;
         public IConfiguration Configuration { get; }
-        public PersonaController(IConfiguration configuration)
+        public PersonaController(IConfiguration configuration, GeneralContext _GContext)
         {
             Configuration = configuration;
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            _psnService = new PersonaService();
+            //string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            _psnService = new PersonaService(_GContext);
         }
         // GET: api/Persona
         [HttpGet]
@@ -49,7 +49,14 @@ namespace SegundoParcial.Controllers
         {
             var psn = new Persona
             {
-                Identificacion = psnInput.Identificacion
+                Identificacion = psnInput.Identificacion,
+                Nombre = psnInput.Nombre,
+                Apellido = psnInput.Apellido,
+                Sexo = psnInput.Sexo,
+                Edad = psnInput.Edad,
+                Departamento = psnInput.Departamento,
+                Ciudad = psnInput.Ciudad,
+                Acumulado = 0
             };
             return psn;
         }

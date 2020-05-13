@@ -6,9 +6,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using Entity;
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
-namespace PrimerParcial
+namespace SegundoParcial
 {
     public class Startup
     {
@@ -22,30 +25,13 @@ namespace PrimerParcial
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var cn = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<GeneralContext>( opt => opt.UseSqlServer( cn, b => b.MigrationsAssembly("SegundoParcial")));
+
             services.AddControllersWithViews();
 
             //Agregar OpenApi Swagger
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "School API",
-                    Description = "School API - ASP.NET Core Web API",
-                    TermsOfService = new Uri("https://cla.dotnetfoundation.org/"),
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Unicesar",
-                        Email = string.Empty,
-                        Url = new Uri("https://github.com/borisgr04/CrudNgDotNetCore3"),
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "Licencia dotnet foundation",
-                        Url = new Uri("https://www.byasystems.co/license"),
-                    }
-                });
-            });
+            services.AddSwaggerGen();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -85,7 +71,8 @@ namespace PrimerParcial
             });
 
             //start swagger
-            app.UseSwagger();
+            //app.UseSwagger();
+            app.UseOpenApi();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");

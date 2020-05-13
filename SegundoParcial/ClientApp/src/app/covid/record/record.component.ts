@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../models/persona';
 
 import { PersonaService } from '../services/persona.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-record',
@@ -10,13 +11,24 @@ import { PersonaService } from '../services/persona.service';
 })
 export class RecordComponent implements OnInit {
 
+  registerForm: FormGroup;
+  summitted:boolean = false;
   psn:Persona;
 
-  constructor(private pS:PersonaService) { 
+  constructor(private pS:PersonaService, private formBuilder:FormBuilder) { 
     this.psn = new Persona();
   }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      id:['', Validators.required],
+      nombre:['', Validators.required],
+      apellido:['', Validators.required],
+      sexo:['', Validators.required],
+      edad:[0, Validators.required],
+      departamento:['', Validators.required],
+      ciudad:['', Validators.required]
+    })
   }
 
   add():void{
@@ -27,12 +39,30 @@ export class RecordComponent implements OnInit {
           alert('Guardado');
           this.psn = data;
         }
+      },
+      (error) => {
+        alert('ha ocurrido un error al guardar')
       }
     );
   }
 
   clear():void{
     this.psn = new Persona();
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  onSumit(){
+    this.summitted = true;
+    if(this.registerForm.invalid){
+      return;
+    }
+    this.add();
+  }
+
+  onReset() {
+    this.summitted = false;
+    this.registerForm.reset();
   }
 
 }
