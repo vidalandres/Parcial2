@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../models/persona';
 
 import { PersonaService } from '../services/persona.service';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-record',
@@ -12,26 +12,27 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class RecordComponent implements OnInit {
 
   registerForm: FormGroup;
-  summitted:boolean = false;
   psn:Persona;
 
   constructor(private pS:PersonaService, private formBuilder:FormBuilder) { 
-    this.psn = new Persona();
+    
   }
 
   ngOnInit() {
+    this.psn = new Persona();
     this.registerForm = this.formBuilder.group({
-      id:['', Validators.required],
-      nombre:['', Validators.required],
-      apellido:['', Validators.required],
-      sexo:['', Validators.required],
-      edad:[0, Validators.required],
-      departamento:['', Validators.required],
-      ciudad:['', Validators.required]
-    })
+      identificacion:[this.psn.identificacion,Validators.required],
+      nombre:[this.psn.nombre,Validators.required],
+      apellido:[this.psn.apellido,Validators.required],
+      sexo:[this.psn.sexo, Validators.required],
+      edad:[this.psn.edad, Validators.required],
+      departamento:[this.psn.departamento,Validators.required],
+      ciudad:[this.psn.ciudad,Validators.required],
+    });
   }
 
   add():void{
+    this.psn = this.registerForm.value;
     console.log(this.psn);
     this.pS.post(this.psn).subscribe(
       (data) => {
@@ -39,9 +40,12 @@ export class RecordComponent implements OnInit {
           alert('Guardado');
           this.psn = data;
         }
+        else{
+          alert("Ya se ha registrado esta persona");
+        }
       },
       (error) => {
-        alert('ha ocurrido un error al guardar')
+        alert('Ha ocurrido un error al guardar');
       }
     );
   }
@@ -53,16 +57,10 @@ export class RecordComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSumit(){
-    this.summitted = true;
     if(this.registerForm.invalid){
       return;
     }
     this.add();
-  }
-
-  onReset() {
-    this.summitted = false;
-    this.registerForm.reset();
   }
 
 }

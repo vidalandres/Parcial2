@@ -3,29 +3,29 @@
         <div class="col-md-6 offset-md-3">
             <h2>Registro de persona</h2>
             <h5>Para recibir apoyo</h5>
-            <form>
+            <form [formGroup]="registerForm">
 
                 <div class="form-group">
                     <label>Identificación</label>
-                    <input formControlname="id" type="text" placeholder="Identificación" name="Identificación" [(ngModel)]="psn.identificacion" class="form-control" 
-                        [ngClass]="{ 'is-invalid': summitted && f.id.errors }"
+                    <input formControlName="identificacion" type="text" class="form-control" 
+                        [ngClass]="{ 'is-invalid': f.identificacion.errors }"
                     />
                 </div>
                 <div class="form-group">
                     <label>Nombres</label>
-                    <input formControlname="nombre" type="text" placeholder="Nombres" name="objeto" [(ngModel)]="psn.nombre" class="form-control"
-                        [ngClass]="{ 'is-invalid': summitted && f.nombre.errors }"
+                    <input formControlName="nombre" type="text" class="form-control"
+                        [ngClass]="{ 'is-invalid': f.nombre.errors }"
                     />
                 </div>
                 <div class="form-group">
                     <label>Apellidos</label>
-                    <input formControlname="apellido" type="text" name="Apellidos" [(ngModel)]="psn.apellido" class="form-control" 
-                    [ngClass]="{ 'is-invalid': summitted && f.apellido.errors }"
+                    <input formControlName="apellido" type="text" class="form-control"  
+                    [ngClass]="{ 'is-invalid': f.apellido.errors }"
                 />
                 </div>
                 <div class="form-group">
                     <label>Sexo</label>
-                    <select formControlname="sexo" class="form-control" [(ngModel)]="psn.sexo" [ngModelOptions]="{standalone:true}">
+                    <select formControlName="sexo" class="form-control" [ngClass]="{ 'is-invalid': f.sexo.errors }">
                         <option selected value="Maculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Indefinido">Indefinido</option>
@@ -33,22 +33,21 @@
                 </div>
                 <div class="form-group">
                     <label>Edad</label>
-                    <input formControlname="edad" type="number" name="Edad" [(ngModel)]="psn.edad" class="form-control"
-                    [ngClass]="{ 'is-invalid': summitted && f.edad.errors }">
+                    <input formControlName="edad" type="number" class="form-control"
+                    [ngClass]="{ 'is-invalid': f.edad.errors }">
                 </div>
                 <div class="form-group">
                     <label>Departamento</label>
-                    <input formControlname="departamento" type="text" name="Departamento" [(ngModel)]="psn.departamento" class="form-control"
-                    [ngClass]="{ 'is-invalid': summitted && f.departamento.errors }">
+                    <input formControlName="departamento" type="text"  class="form-control"
+                    [ngClass]="{ 'is-invalid': f.departamento.errors }">
                 </div>
                 <div class="form-group">
                     <label>Ciudad</label>
-                    <input formControlname="ciudad" type="text" name="Ciudad" [(ngModel)]="psn.ciudad" class="form-control"
-                    [ngClass]="{ 'is-invalid': summitted && f.ciudad.errors }">
+                    <input formControlName="ciudad" type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid': f.ciudad.errors }">
                 </div>
                 <div class="text-center">
                     <button class="btn btn-primary mr-1" (click)="onSumit()">Guardar</button>
-                    <button class="btn btn-primary mr-1" (click)="onReset()">Limpiar</button>
                 </div>
             </form>
         </div>
